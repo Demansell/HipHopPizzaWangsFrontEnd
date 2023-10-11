@@ -1,5 +1,5 @@
-const getAllItems = () => new Promise((resolve, reject) => {
-  fetch('https://localhost:7011/items/', {
+const getAllOrders = () => new Promise((resolve, reject) => {
+  fetch('https://localhost:7011/Order/', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -10,8 +10,8 @@ const getAllItems = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleItems = (Id) => new Promise((resolve, reject) => {
-  fetch(`https://localhost:7011/api/ItembyID/${Id}`, {
+const getSingleOrders = (Id) => new Promise((resolve, reject) => {
+  fetch(`https://localhost:7011/api//OrdersbyID/${Id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -22,8 +22,8 @@ const getSingleItems = (Id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteSingleItem = (itemId) => new Promise((resolve, reject) => {
-  fetch(`https://localhost:7011/api/Item/${itemId}`, {
+const deleteSingleOrder = (orderId) => new Promise((resolve, reject) => {
+  fetch(`https://localhost:7011/api/Order/${orderId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const deleteSingleItem = (itemId) => new Promise((resolve, reject) => {
 });
 
 export {
-  getAllItems,
-  getSingleItems,
-  deleteSingleItem,
+  getAllOrders,
+  getSingleOrders,
+  deleteSingleOrder,
 };

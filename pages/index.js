@@ -1,3 +1,5 @@
+import React from 'react';
+import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 
@@ -15,9 +17,9 @@ function Home() {
     >
       <h1>Hello {user.fbUser.displayName}! </h1>
 
-      <Button variant="warning" type="button" size="lg" className="copy-btn">
-        View Orders
-      </Button>
+      <Link href="/orders/order" passHref>
+        <Button variant="info">View all Orders</Button>
+      </Link>
       <Button variant="primary" type="button" size="lg" className="copy-btn">
         Create a Order
       </Button>
