@@ -11,7 +11,7 @@ const getAllOrders = () => new Promise((resolve, reject) => {
 });
 
 const getSingleOrders = (Id) => new Promise((resolve, reject) => {
-  fetch(`https://localhost:7011/api//OrdersbyID/${Id}`, {
+  fetch(`https://localhost:7011/api/OrdersbyID/${Id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
