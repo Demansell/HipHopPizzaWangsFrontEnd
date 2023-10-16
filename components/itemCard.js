@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { deleteSingleItem } from '../api/items';
-// import Link from 'next/link';
+
 // import { useAuth } from '../utils/context/authContext';
 
 function ItemCard({ itemObj }) {
@@ -22,7 +23,9 @@ function ItemCard({ itemObj }) {
       <Card.Text>
         {itemObj?.name}
       </Card.Text>
-      <Button variant="primary" type="button" className="copy-btn"> View Item </Button>
+      <Link href={`/items/${itemObj.id}`} passHref>
+        <Button variant="primary" type="button" className="copy-btn"> View Item Details </Button>
+      </Link>
       <Button variant="warning" type="button" className="copy-btn"> Edit Item </Button>
       <Button variant="danger" type="button" className="copy-btn" onClick={deleteThisItem}> Delete </Button>
     </Card>

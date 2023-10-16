@@ -20,9 +20,9 @@ function Home() {
       <Link href="/orders/order" passHref>
         <Button variant="info">View all Orders</Button>
       </Link>
-      <Button variant="primary" type="button" size="lg" className="copy-btn">
-        Create a Order
-      </Button>
+      <Link href="/orders/new" passHref>
+        <Button variant="warning">Create A Order</Button>
+      </Link>
       <Button variant="success" type="button" size="lg" className="copy-btn">
         View Revenue
       </Button>

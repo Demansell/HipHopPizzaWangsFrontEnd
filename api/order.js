@@ -22,8 +22,8 @@ const getSingleOrders = (Id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteSingleOrder = (orderId) => new Promise((resolve, reject) => {
-  fetch(`https://localhost:7011/api/Order/${orderId}`, {
+const deleteSingleOrder = (id) => new Promise((resolve, reject) => {
+  fetch(`https://localhost:7011/api/Order/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -33,8 +33,34 @@ const deleteSingleOrder = (orderId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const postOrder = () => new Promise((resolve, reject) => {
+  fetch('https://localhost:7011/api/Order/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    // .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const updateOrder = (Id) => new Promise((resolve, reject) => {
+  fetch(`https://localhost:7011/api/Order/${Id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   getAllOrders,
   getSingleOrders,
   deleteSingleOrder,
+  postOrder,
+  updateOrder,
 };
