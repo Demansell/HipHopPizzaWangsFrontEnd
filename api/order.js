@@ -46,12 +46,13 @@ const postOrder = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateOrder = (Id) => new Promise((resolve, reject) => {
+const updateOrder = (Id, payload) => new Promise((resolve, reject) => {
   fetch(`https://localhost:7011/api/Order/${Id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify(payload),
   })
     .then((response) => response.json())
     .then((data) => resolve(data))

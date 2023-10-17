@@ -15,5 +15,5 @@ export default function EditMember() {
   }, [id]);
 
   // TODO: pass object to form
-  return (<ItemForm obj={editItem} />);
+  return (<ItemForm itemObj={editItem} />);
 }

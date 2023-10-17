@@ -15,5 +15,5 @@ export default function EditOrder() {
   }, [id]);
 
   // TODO: pass object to form
-  return (<OrderForm itemObj={editOrder} />);
+  return (<OrderForm obj={editOrder} />);
 }
