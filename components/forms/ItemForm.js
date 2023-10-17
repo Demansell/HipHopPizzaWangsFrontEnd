@@ -12,7 +12,7 @@ const initialState = {
   name: '',
   description: '',
   price: '',
-  id: 0,
+  id: null,
 };
 // this is a comment
 function ItemForm({ itemObj, orderId }) {
@@ -38,17 +38,13 @@ function ItemForm({ itemObj, orderId }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (itemObj.id) {
+    if (itemObj > 0) {
       updateItem(formInput)
         .then(() => router.push(`/items/${itemObj.id}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
-      postItem(payload).then(({ name }) => {
-        const patchPayload = { id: name };
-        updateItem(patchPayload).then(() => {
-          router.push('/');
-        });
-      });
+      console.log(payload);
+      postItem(payload);
     }
   };
 

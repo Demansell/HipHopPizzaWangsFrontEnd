@@ -2,15 +2,25 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getSingleOrders } from '../../api/order';
+import ItemCard from '../../components/itemCard';
+import { getOrderItems } from '../../api/items';
+import Link from 'next/link';
+import { Button } from 'react-bootstrap';
 export default function orderDetails() {
   const router = useRouter();
   const [orderDetails, setOrderDetails] = useState({});
+  const [items, setItems] = useState([]);
   // TODO: grab firebaseKey from url
   const { id } = router.query;
   // TODO: make call to API layer to get the data
   useEffect(() => {
     getSingleOrders(id).then (setOrderDetails);
   }, [id]);
+
+  useEffect(() => {
+    getOrderItems(id).then(setItems);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   
 
   return (
@@ -25,9 +35,17 @@ export default function orderDetails() {
                 {orderDetails.customerEmail}
                 {orderDetails.customerPhoneNumber}
               </p>
+              <Link href="/items/new" passHref>
+        <Button> Add A Item</Button>
+      </Link>
+      <div className="CommentCardShow d-flex flex-wrap" style={{ marginTop: '20px' }}>
+        {items.map((item) => (
+          <ItemCard key={item.orderId} itemObj={item} onUpdate={getOrderItems} />
+        ))}
             </div>
           </div>
         </div>
+      </div>
       </div>
   );
 }

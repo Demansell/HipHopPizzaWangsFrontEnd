@@ -45,27 +45,41 @@ const deleteSingleItem = (itemId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const postItem = () => new Promise((resolve, reject) => {
+const postItem = (payload) => new Promise((resolve, reject) => {
   fetch('https://localhost:7011/api/Item/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify(payload),
   })
     .then((response) => response.json())
     .then((data) => resolve(data))
     .catch(reject);
 });
 
-const updateItem = (Id) => new Promise((resolve, reject) => {
+const updateItem = (Id, payload) => new Promise((resolve, reject) => {
   fetch(`https://localhost:7011/api/Items/${Id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify(payload),
   })
     .then((response) => response.json())
     .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const getOrderItems = (orderId) => new Promise((resolve, reject) => {
+  fetch(`https://localhost:7011/api/ItembyorderID/${orderId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
     .catch(reject);
 });
 
@@ -76,4 +90,5 @@ export {
   postItem,
   updateItem,
   getItemsByOrderId,
+  getOrderItems,
 };

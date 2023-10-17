@@ -43,8 +43,9 @@ function OrderCard({ orderObj }) {
       <Link href={`/orders/${orderObj.id}`} passHref>
         <Button variant="primary" type="button" className="copy-btn"> View Order </Button>
       </Link>
-      <Button variant="warning" type="button" className="copy-btn"> Edit Order </Button>
-      <Button variant="danger" type="button" className="copy-btn" onClick={deleteThisOrder}> Delete </Button>
+      <Link href={`/orders/edit/${orderObj.id}`} passHref>
+        <Button variant="info">Edit Order</Button>
+      </Link>      <Button variant="danger" type="button" className="copy-btn" onClick={deleteThisOrder}> Delete </Button>
     </Card>
   );
 }

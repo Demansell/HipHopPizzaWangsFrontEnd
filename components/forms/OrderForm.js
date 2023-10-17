@@ -17,7 +17,7 @@ const initialState = {
   orderType: '',
   feedBack: false,
   tip: 0,
-  id: 0,
+  id: null,
 };
 
 function OrderForm({ obj }) {
@@ -43,17 +43,13 @@ function OrderForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.id) {
+    if (obj.id > 0) {
       updateOrder(formInput)
         .then(() => router.push(`/orders/${obj.id}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
-      postOrder(payload).then(({ name }) => {
-        const patchPayload = { id: name };
-        updateOrder(patchPayload).then(() => {
-          router.push('/');
-        });
-      });
+      console.log(payload);
+      postOrder(payload);
     }
   };
 

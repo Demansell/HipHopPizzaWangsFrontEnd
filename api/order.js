@@ -33,12 +33,13 @@ const deleteSingleOrder = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const postOrder = () => new Promise((resolve, reject) => {
+const postOrder = (payload) => new Promise((resolve, reject) => {
   fetch('https://localhost:7011/api/Order/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify(payload),
   })
     // .then((response) => response.json())
     .then((data) => resolve(data))

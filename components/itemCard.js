@@ -26,7 +26,9 @@ function ItemCard({ itemObj }) {
       <Link href={`/items/${itemObj.id}`} passHref>
         <Button variant="primary" type="button" className="copy-btn"> View Item Details </Button>
       </Link>
-      <Button variant="warning" type="button" className="copy-btn"> Edit Item </Button>
+      <Link href={`/items/edit/${itemObj.id}`} passHref>
+        <Button variant="info">Edit Item</Button>
+      </Link>
       <Button variant="danger" type="button" className="copy-btn" onClick={deleteThisItem}> Delete </Button>
     </Card>
   );
