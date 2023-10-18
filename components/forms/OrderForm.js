@@ -126,11 +126,22 @@ function OrderForm({ obj }) {
       <Form.Check
         type="switch"
         id="custom-switch"
-        label="Check this switch"
+        label="Click if Order is closed"
         onChange={() => {
           // eslint-disable-next-line no-param-reassign
           obj.isOpen = !obj.isOpen;
           console.log(obj.isOpen);
+        }}
+      />
+
+      <Form.Check
+        type="switch"
+        id="custom-switch"
+        label="Click if you enjoyed the service"
+        onChange={() => {
+          // eslint-disable-next-line no-param-reassign
+          obj.feedBack = !obj.feedBack;
+          console.log(obj.feedBack);
         }}
       />
 
