@@ -13,7 +13,7 @@ export default function EditOrder() {
   useEffect(() => {
     getSingleOrders(id).then(setEditOrder);
   }, [id]);
-
+  console.log(setEditOrder);
   // TODO: pass object to form
   return (<OrderForm obj={editOrder} />);
 }

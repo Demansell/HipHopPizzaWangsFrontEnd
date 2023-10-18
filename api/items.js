@@ -58,8 +58,8 @@ const postItem = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateItem = (Id, payload) => new Promise((resolve, reject) => {
-  fetch(`https://localhost:7011/api/Items/${Id}`, {
+const updateItem = (id, payload) => new Promise((resolve, reject) => {
+  fetch(`https://localhost:7011/api/Items/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

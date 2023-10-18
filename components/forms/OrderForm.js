@@ -20,7 +20,7 @@ const initialState = {
   id: null,
 };
 
-function OrderForm({ obj }) {
+function OrderForm({ orderObj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [items, setItems] = useState([]);
   const router = useRouter();
@@ -29,8 +29,8 @@ function OrderForm({ obj }) {
   useEffect(() => {
     getAllItems(user.uid).then(setItems);
 
-    if (obj.id) setFormInput(obj);
-  }, [obj, user]);
+    if (orderObj.id) setFormInput(orderObj);
+  }, [orderObj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,9 +43,9 @@ function OrderForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.id > 0) {
+    if (orderObj.id > 0) {
       updateOrder(formInput)
-        .then(() => router.push(`/orders/${obj.id}`));
+        .then(() => router.push(`/orders/${orderObj.id}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       console.log(payload);
@@ -55,7 +55,7 @@ function OrderForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Create'} Order</h2>
+      <h2 className="text-white mt-5">{orderObj.id ? 'Update' : 'Create'} Order</h2>
 
       {/* TITLE INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Customer Name" className="mb-3">
@@ -129,8 +129,8 @@ function OrderForm({ obj }) {
         label="Click if Order is closed"
         onChange={() => {
           // eslint-disable-next-line no-param-reassign
-          obj.isOpen = !obj.isOpen;
-          console.log(obj.isOpen);
+          orderObj.isOpen = !orderObj.isOpen;
+          console.log(orderObj.isOpen);
         }}
       />
 
@@ -140,19 +140,19 @@ function OrderForm({ obj }) {
         label="Click if you enjoyed the service"
         onChange={() => {
           // eslint-disable-next-line no-param-reassign
-          obj.feedBack = !obj.feedBack;
-          console.log(obj.feedBack);
+          orderObj.feedBack = !orderObj.feedBack;
+          console.log(orderObj.feedBack);
         }}
       />
 
       {/* SUBMIT BUTTON  */}
-      <Button type="submit">{obj.id ? 'Update' : 'Create'} Order</Button>
+      <Button type="submit">{orderObj.id ? 'Update' : 'Create'} Order</Button>
     </Form>
   );
 }
 
 OrderForm.propTypes = {
-  obj: PropTypes.shape({
+  orderObj: PropTypes.shape({
     customerName: PropTypes.string,
     customerEmail: PropTypes.string,
     customerPhoneNumber: PropTypes.string,
@@ -166,7 +166,7 @@ OrderForm.propTypes = {
 };
 
 OrderForm.defaultProps = {
-  obj: initialState,
+  orderObj: initialState,
 };
 
 export default OrderForm;

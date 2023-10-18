@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import OrderCard from '../components/OrderCard';
-import { getClosedOrders } from '../api/order';
+import { getClosedOrders } from '../../api/order';
+import ClosedOrderCard from '../../components/ClosedOrderCard';
 
 function OrderPage() {
   const [orders, setOrder] = useState([]);
@@ -29,7 +29,7 @@ function OrderPage() {
       </div>
       <div className="d-flex justify-content-between">
         {orders?.map((order) => (
-          <OrderCard orderObj={order} />))}
+          <ClosedOrderCard closedOrderObj={order} />))}
       </div>
     </>
   );
