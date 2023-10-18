@@ -15,5 +15,5 @@ export default function EditOrder() {
   }, [id]);
   console.log(setEditOrder);
   // TODO: pass object to form
-  return (<OrderForm obj={editOrder} />);
+  return (<OrderForm orderObj={editOrder} />);
 }
