@@ -6,10 +6,8 @@ import OrderForm from '../../../components/forms/OrderForm';
 export default function EditOrder() {
   const [editOrder, setEditOrder] = useState({});
   const router = useRouter();
-  // TODO: grab the firebasekey
   const { id } = router.query;
 
-  // TODO: make a call to the API to get the book data
   useEffect(() => {
     getSingleOrders(id).then(setEditOrder);
   }, [id]);

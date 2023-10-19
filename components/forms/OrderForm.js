@@ -5,8 +5,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { getAllItems } from '../../api/items';
 import { postOrder, updateOrder } from '../../api/order';
+import { getAllItems } from '../../api/items';
 
 const initialState = {
   customerName: '',
@@ -45,7 +45,7 @@ function OrderForm({ orderObj }) {
     e.preventDefault();
     if (orderObj.id > 0) {
       updateOrder(formInput)
-        .then(() => router.push(`/orders/${orderObj.id}`));
+        .then(() => router.push('/orders'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       console.log(payload);
@@ -123,7 +123,7 @@ function OrderForm({ orderObj }) {
         />
       </FloatingLabel>
 
-      <Form.Check
+      {/* <Form.Check
         type="switch"
         id="custom-switch"
         label="Click if Order is closed"
@@ -131,6 +131,18 @@ function OrderForm({ orderObj }) {
           // eslint-disable-next-line no-param-reassign
           orderObj.isOpen = !orderObj.isOpen;
           console.log(orderObj.isOpen);
+        }}
+      /> */}
+
+      <Form.Check
+        type="switch"
+        id="custom-switch"
+        label="Click here for closing order"
+        onChange={() => {
+          setFormInput((prevInput) => ({
+            ...prevInput,
+            isOpen: !prevInput.isOpen,
+          }));
         }}
       />
 
