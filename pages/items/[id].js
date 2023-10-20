@@ -19,12 +19,9 @@ export default function orderDetails() {
           <div class="b2">
             <span></span>
             <div class="c3">
-              <h1>Item Details</h1> {itemDetails.name} 
-              <p style={{ marginButton: '100px' }}>
-                {itemDetails.id}
-                {itemDetails.price}
-                {itemDetails.description}
-              </p>
+              <h1>{itemDetails.name} Details</h1> 
+              <h4>Item Price: ${itemDetails.price}</h4>
+              <h4> Item description: {itemDetails.description}</h4>
             </div>
           </div>
         </div>

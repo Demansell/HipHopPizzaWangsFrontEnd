@@ -12,8 +12,10 @@ const initialState = {
   customerName: '',
   customerEmail: '',
   customerPhoneNumber: '',
+  paymentMethod: '',
   isOpen: false,
   orderTotal: 0,
+  orderTotalWithoutTip: 0,
   orderType: '',
   feedBack: false,
   tip: 0,
@@ -93,16 +95,6 @@ function OrderForm({ orderObj }) {
         />
       </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput3" label="Order Total" className="mb-3">
-        <Form.Control
-          type="number"
-          placeholder="Order Total"
-          name="orderTotal"
-          value={formInput.orderTotal}
-          onChange={handleChange}
-        />
-      </FloatingLabel>
-
       <FloatingLabel controlId="floatingInput3" label="Order Type" className="mb-3">
         <Form.Control
           type="text"
@@ -113,12 +105,43 @@ function OrderForm({ orderObj }) {
         />
       </FloatingLabel>
 
+      <FloatingLabel controlId="floatingInput1" label="Payment Method" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Payment Method"
+          name="paymentMethod"
+          value={formInput.paymentMethod}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+
+      <FloatingLabel controlId="floatingInput3" label="Order Total without Tip" className="mb-3">
+        <Form.Control
+          type="number"
+          placeholder="Order Total without Tip"
+          name="orderTotalWithoutTip"
+          value={formInput.orderTotalWithoutTip}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
+
       <FloatingLabel controlId="floatingInput3" label="Tip" className="mb-3">
         <Form.Control
           type="number"
           placeholder="Tip"
           name="tip"
           value={formInput.tip}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
+
+      <FloatingLabel controlId="floatingInput3" label="Order Total with Tip" className="mb-3">
+        <Form.Control
+          type="number"
+          placeholder="Order Total including Tip"
+          name="orderTotal"
+          value={formInput.orderTotal}
           onChange={handleChange}
         />
       </FloatingLabel>
@@ -149,13 +172,25 @@ function OrderForm({ orderObj }) {
       <Form.Check
         type="switch"
         id="custom-switch"
+        label="Click here if you enjoyed your service"
+        onChange={() => {
+          setFormInput((prevInput) => ({
+            ...prevInput,
+            feedBack: !prevInput.feedBack,
+          }));
+        }}
+      />
+
+      { /* <Form.Check
+        type="switch"
+        id="custom-switch"
         label="Click if you enjoyed the service"
         onChange={() => {
           // eslint-disable-next-line no-param-reassign
           orderObj.feedBack = !orderObj.feedBack;
           console.log(orderObj.feedBack);
         }}
-      />
+      /> */ }
 
       {/* SUBMIT BUTTON  */}
       <Button type="submit">{orderObj.id ? 'Update' : 'Create'} Order</Button>
@@ -171,7 +206,9 @@ OrderForm.propTypes = {
     isOpen: PropTypes.bool,
     orderTotal: PropTypes.number,
     orderType: PropTypes.string,
+    paymentMethod: PropTypes.string,
     feedBack: PropTypes.bool,
+    orderTotalWithoutTip: PropTypes.number,
     tip: PropTypes.number,
     id: PropTypes.number,
   }),

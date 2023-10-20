@@ -23,9 +23,9 @@ function Home() {
       <Link href="/orders/new" passHref>
         <Button variant="warning">Create A Order</Button>
       </Link>
-      <Button variant="success" type="button" size="lg" className="copy-btn">
-        View Revenue
-      </Button>
+      <Link href="/closedOrders/closedOrder" passHref>
+        <Button variant="success">Total Revenue</Button>
+      </Link>
     </div>
   );
 }

@@ -21,7 +21,10 @@ function ItemCard({ itemObj }) {
     <Card style={{ width: '18rem' }}>
 
       <Card.Text>
-        {itemObj?.name}
+        Item Name: {itemObj?.name}
+      </Card.Text>
+      <Card.Text>
+        Item Price: ${itemObj?.price}
       </Card.Text>
       <Link href={`/items/${itemObj.id}`} passHref>
         <Button variant="primary" type="button" className="copy-btn"> View Item Details </Button>
@@ -38,6 +41,7 @@ ItemCard.propTypes = {
   itemObj: PropTypes.shape({
     content: PropTypes.string,
     id: PropTypes.number,
+    price: PropTypes.number,
     name: PropTypes.string,
   }).isRequired,
 };

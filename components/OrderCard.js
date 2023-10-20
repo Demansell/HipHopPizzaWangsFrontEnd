@@ -16,20 +16,20 @@ function OrderCard({ orderObj }) {
     <Card style={{ width: '18rem' }}>
 
       <Card.Text>
-        {orderObj?.customerName}
+        Customer Name: {orderObj?.customerName}
       </Card.Text>
       <Card.Text>
-        {orderObj?.customerEmail}
+        Customer Email: {orderObj?.customerEmail}
       </Card.Text>
       <Card.Text>
-        {orderObj?.customerPhoneNumber}
+        Customer Phone Number: {orderObj?.customerPhoneNumber}
       </Card.Text>
       <Link href={`/orders/${orderObj.id}`} passHref>
         <Button variant="primary" type="button" className="copy-btn"> View Order </Button>
       </Link>
       <Link href={`/orders/edit/${orderObj.id}`} passHref>
         <Button variant="info">Edit Order</Button>
-      </Link>      <Button variant="danger" type="button" className="copy-btn" onClick={deleteThisOrder}> Delete </Button>
+      </Link>      <Button variant="danger" type="button" className="copy-btn" onClick={deleteThisOrder}> Delete Order</Button>
     </Card>
   );
 }

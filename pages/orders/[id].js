@@ -29,12 +29,15 @@ export default function orderDetails() {
           <div class="b2">
             <span></span>
             <div class="c3">
-              <h1>Orders</h1> {orderDetails.customerName} 
-              <p style={{ marginButton: '100px' }}>
-                {orderDetails.customerName} 
-                {orderDetails.customerEmail}
-                {orderDetails.customerPhoneNumber}
-              </p>
+              <h1>{orderDetails.customerName}'s Order</h1> 
+              <h4>Customer Name: {orderDetails.customerName} </h4>
+              <h4>Customer Email: {orderDetails.customerEmail} </h4>
+              <h4> Customer Phone Number: {orderDetails.customerPhoneNumber}</h4>
+              <h4> Payment Method: {orderDetails.paymentMethod}</h4>
+              <h4> Order Type: {orderDetails.orderType}</h4>
+              <h4> Order Total without Tip: ${orderDetails.orderTotalWithoutTip}</h4>
+              <h4> Tip Amount: ${orderDetails.tip}</h4>
+              <h4> Order Total w/ Tip: ${orderDetails.orderTotal}</h4>
               <Link href="/items/new" passHref>
         <Button> Add A Item</Button>
       </Link>

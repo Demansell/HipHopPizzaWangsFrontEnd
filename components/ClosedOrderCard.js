@@ -24,6 +24,9 @@ function ClosedOrderCard({ closedOrderObj }) {
       <Card.Text>
         Order Tip: {closedOrderObj?.tip}
       </Card.Text>
+      <Card.Text>
+        payment Method: {closedOrderObj?.paymentMethod}
+      </Card.Text>
       <Link href={`/closedorder/${closedOrderObj.id}`} passHref>
         <Button variant="primary" type="button" className="copy-btn"> View Total Rev </Button>
       </Link>
@@ -38,6 +41,7 @@ ClosedOrderCard.propTypes = {
     customerName: PropTypes.string,
     id: PropTypes.number,
     orderType: PropTypes.string,
+    paymentMethod: PropTypes.string,
     tip: PropTypes.number,
   }).isRequired,
 };
