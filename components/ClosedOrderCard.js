@@ -25,7 +25,7 @@ function ClosedOrderCard({ closedOrderObj }) {
         Order Tip: {closedOrderObj?.tip}
       </Card.Text>
       <Card.Text>
-        payment Method: {closedOrderObj?.paymentMethod}
+        Payment Method: {closedOrderObj?.paymentMethod}
       </Card.Text>
       <Link href={`/closedorder/${closedOrderObj.id}`} passHref>
         <Button variant="primary" type="button" className="copy-btn"> View Total Rev </Button>
